@@ -52,5 +52,7 @@ int main()
     display(head);
     insertAtTail(head, 3);
     display(head);
+    insertAtTail(head, 4);
+    display(head);
     return 0;
 }
