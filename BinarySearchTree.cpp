@@ -158,7 +158,7 @@ void displayTraversals(Node *root)
 
 void clearScreen()
 {
-    system("cls"); // For Windows, use "clear" for Linux/Mac
+    system("clear"); // For Windows, use "clear" for Linux/Mac
 }
 
 int main() {

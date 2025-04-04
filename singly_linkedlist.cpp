@@ -32,6 +32,87 @@ void insertAtTail(Node* &head, int value)
     temp->next = new_node;
 }
 
+void insertAtArbitaryPosition(Node* &head, int value, int pos)
+{
+    if(pos == 0)
+    {
+        insertAtHead(head, value);
+        return;
+    }
+    Node* new_node = new Node(value);
+    Node* temp = head;
+    int current_pos = 0;
+    while(current_pos != pos-1)
+    {
+        temp = temp->next;
+        current_pos++;
+    }
+    new_node->next = temp->next;
+    temp->next = new_node;
+}
+
+void updateAtArbitaryPostion(Node* &head, int value, int pos)
+{
+    Node* temp = head;
+    int current_pos = 0;
+    while(current_pos <= pos)
+    {
+        if(current_pos == pos)
+        {
+            temp->value = value;
+        }
+        current_pos++;
+    }
+}
+
+void deleteAtHead(Node* &head)
+{
+    head = head->next;
+}
+
+void deleteAtTail(Node* &head)
+{
+    Node* temp1 = head;
+    Node* temp2 = 0;
+    while(temp1->next != NULL)
+    {
+        temp2 = temp1;
+        temp1 = temp1->next;
+    }
+    delete temp1;
+    if(temp2)temp2->next = NULL;
+    else head = NULL;
+
+}
+
+void deleteAtArbitaryPosition(Node* &head, int pos)
+{
+    if (!head) return;
+    
+    Node* temp1 = head;
+    if (pos == 0)
+    {
+        head = head->next;
+        delete temp1;
+        return;
+    }
+    
+    Node* temp2 = NULL;
+    int current_pos = 0;
+    while (temp1 && current_pos < pos)
+    {
+        temp2 = temp1;
+        temp1 = temp1->next;
+        current_pos++;
+    }
+    
+    if (!temp1) return; 
+    
+    temp2->next = temp1->next;
+    delete temp1;
+}
+
+
 void display(Node* head)
 {
     Node* temp = head;
@@ -54,5 +135,16 @@ int main()
     display(head);
     insertAtTail(head, 4);
     display(head);
+    insertAtArbitaryPosition(head, 5, 3);
+    display(head);
+    deleteAtHead(head);
+    display(head);
+    deleteAtTail(head);
+    display(head);
+    updateAtArbitaryPostion(head, 7, 2);
+    display(head);
+    deleteAtArbitaryPosition(head, 2);
+    display(head);
+    
     return 0;
 }
