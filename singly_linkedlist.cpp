@@ -87,29 +87,21 @@ void deleteAtTail(Node* &head)
 
 void deleteAtArbitaryPosition(Node* &head, int pos)
 {
-    if (!head) return;
-    
-    Node* temp1 = head;
-    if (pos == 0)
+    if(pos==0)
     {
-        head = head->next;
-        delete temp1;
+        deleteAtHead(head);
         return;
     }
-    
-    Node* temp2 = NULL;
     int current_pos = 0;
-    while (temp1 && current_pos < pos)
+    Node* prev = head;
+    while(current_pos != pos - 1)
     {
-        temp2 = temp1;
-        temp1 = temp1->next;
+        prev = prev->next;
         current_pos++;
     }
-    
-    if (!temp1) return; 
-    
-    temp2->next = temp1->next;
-    delete temp1;
+    Node* temp = prev->next;
+    prev->next = prev->next->next;
+    free(temp);
 }
 
 
