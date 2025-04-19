@@ -1,58 +1,57 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-class Stack
+class Queue
 {
 private:
+    int* arr;
     int size;
-    int *arr;
-    int top_index;
-
+    int front;
+    int back;
 public:
-    Stack(int capacity)
+    Queue(int capacity)
     {
         size = capacity;
         arr = new int[size];
-        top_index = -1;
+        front = 0;
+        back = -1;
     }
     void pushElement(int data)
     {
-        if (top_index < size - 1)
+        if((back-front) < size-1)
         {
-            top_index++;
-            arr[top_index] = data;
+            back++;
+            arr[back] = data;
         }
         else
         {
-            cout << "Stack Overflow." << endl;
-            return;
+            cout<< "Queue is full." << endl;
         }
     }
     void popElement()
     {
-        if (top_index >= 0)
+        if((back-front) > 0)
         {
-            top_index--;
+            front++;
         }
         else
         {
-            cout << "Stack Underflow." << endl;
-            return;
+            cout<< "Queue is Empty." << endl;
         }
     }
     void display()
     {
-        for (int i = 0; i <= top_index; i++)
+        for(int i = front; i<= back; i++)
         {
-            cout << arr[i] << " ";
+            cout<< arr[i] << " ";
         }
-        cout << "\n";
+        cout<<"\n";
     }
 };
 
 int main()
 {
-    Stack st(5);
+    Queue q(5);
     while (true)
     {
         int choice;
@@ -68,21 +67,21 @@ int main()
             int element;
             cout << "Enter the element you want to push: ";
             cin >> element;
-            st.pushElement(element);
+            q.pushElement(element);
             cout << "Press Enter to continue...";
             cin.ignore();
             cin.get();
         }
         else if (choice == 2)
         {
-            st.popElement();
+            q.popElement();
             cout << "Press Enter to continue...";
             cin.ignore();
             cin.get();
         }
         else if (choice == 3)
         {
-            st.display();
+            q.display();
             cout << "Press Enter to continue...";
             cin.ignore();
             cin.get();
@@ -104,6 +103,7 @@ int main()
 #else
         system("clear");
 #endif
+
     }
     return 0;
 }
