@@ -1,24 +1,24 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 int binarySearch(vector<int> &v, int target)
 {
     int low = 0;
-    int high = v.size()-1;
+    int high = v.size() - 1;
 
-    while(low <= high)
+    while (low <= high)
     {
         int mid = (low + high) / 2;
-        if(v[mid] == target)
+        if (v[mid] == target)
         {
             return mid;
         }
-        else if(v[mid] < target)
+        else if (v[mid] < target)
         {
             low = mid + 1;
         }
-        else if(v[mid] > target)
+        else if (v[mid] > target)
         {
             high = mid - 1;
         }
@@ -28,9 +28,9 @@ int binarySearch(vector<int> &v, int target)
 
 int main()
 {
-    vector<int> v = {2, 3, 11, 9, 17, 5, 13, 1, 7, 4};
-    int target = 17;
+    vector<int> v = {2, 13, 15, 17, 19, 55, 70, 81, 87, 94};
+    int target = 19;
     int index = binarySearch(v, target);
-    cout<< "Index of target: " << index << endl;
+    cout << "Index of target: " << index << endl;
     return 0;
 }
