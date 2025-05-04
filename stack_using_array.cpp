@@ -17,7 +17,7 @@ public:
     }
     void push(int data)
     {
-        if(this->top >= this->capacity - 1)
+        if(this->top == this->capacity - 1)
         {
             cout<< "Stack is full." << endl;
             return;

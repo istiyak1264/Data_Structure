@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
-
 void dfs(int node, vector<vector<int>> &adj, vector<bool> &visited)
 {
     visited[node] = true;
